@@ -1,0 +1,39 @@
+
+==> Audit <==
+┌─────────┬────────────────────────────────────────┬──────────┬──────┬─────────┬─────────────────────┬──────────┐
+│ COMMAND │                  ARGS                  │ PROFILE  │ USER │ VERSION │     START TIME      │ END TIME │
+├─────────┼────────────────────────────────────────┼──────────┼──────┼─────────┼─────────────────────┼──────────┤
+│ start   │ --driver=podman --alsologtostderr -v=2 │ minikube │ kero │ v1.38.1 │ 08 Aug 26 05:11 EDT │          │
+└─────────┴────────────────────────────────────────┴──────────┴──────┴─────────┴─────────────────────┴──────────┘
+
+
+==> Last Start <==
+Log file created at: 2026/08/08 05:11:59
+Running on machine: server
+Binary: Built with gc go1.25.5 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0808 05:11:59.931633   22477 out.go:360] Setting OutFile to fd 1 ...
+I0808 05:11:59.932420   22477 out.go:413] isatty.IsTerminal(1) = true
+I0808 05:11:59.932634   22477 out.go:374] Setting ErrFile to fd 2...
+I0808 05:11:59.932885   22477 out.go:413] isatty.IsTerminal(2) = true
+I0808 05:11:59.933506   22477 root.go:338] Updating PATH: /home/kero/.minikube/bin
+W0808 05:11:59.934075   22477 root.go:314] Error reading config file at /home/kero/.minikube/config/config.json: open /home/kero/.minikube/config/config.json: no such file or directory
+I0808 05:11:59.935901   22477 out.go:368] Setting JSON to false
+I0808 05:11:59.939084   22477 start.go:134] hostinfo: {"hostname":"server","uptime":9627,"bootTime":1786170693,"procs":333,"os":"linux","platform":"redhat","platformFamily":"rhel","platformVersion":"9.8","kernelVersion":"5.14.0-687.12.1.el9_8.x86_64","kernelArch":"x86_64","virtualizationSystem":"","virtualizationRole":"","hostId":"a4145288-b984-4c58-80f8-744833dd9428"}
+I0808 05:11:59.939605   22477 start.go:144] virtualization:  
+I0808 05:11:59.944209   22477 out.go:179] 😄  minikube v1.38.1 on Redhat 9.8
+I0808 05:11:59.953955   22477 driver.go:422] Setting default libvirt URI to qemu:///system
+W0808 05:11:59.962843   22477 preload.go:371] Failed to list preload files: open /home/kero/.minikube/cache/preloaded-tarball: no such file or directory
+I0808 05:11:59.962940   22477 notify.go:220] Checking for updates...
+W0808 05:12:00.107169   22477 podman.go:139] podman returned error: exit status 1
+I0808 05:12:00.115503   22477 out.go:179] ✨  Using the podman driver based on user configuration
+I0808 05:12:00.117440   22477 start.go:310] selected driver: podman
+I0808 05:12:00.119256   22477 start.go:935] validating driver "podman" against <nil>
+I0808 05:12:00.119649   22477 start.go:946] status for podman: {Installed:true Healthy:false Running:false NeedsImprovement:false Error:"sudo -n -k podman version --format {{.Version}}" exit status 1: sudo: a password is required Reason: Fix:Add your user to the 'sudoers' file: 'kero ALL=(ALL) NOPASSWD: /usr/bin/podman' , or run 'minikube config set rootless true' Doc:https://podman.io Version:}
+I0808 05:12:00.130234   22477 out.go:203] 
+W0808 05:12:00.132586   22477 out.go:285] 💣  Exiting due to PROVIDER_PODMAN_NOT_RUNNING: "sudo -n -k podman version --format <no value>" exit status 1: sudo: a password is required
+W0808 05:12:00.132802   22477 out.go:285] 💡  Suggestion: Add your user to the 'sudoers' file: 'kero ALL=(ALL) NOPASSWD: /usr/bin/podman' , or run 'minikube config set rootless true'
+W0808 05:12:00.132912   22477 out.go:285] 📘  Documentation: https://podman.io
+I0808 05:12:00.137688   22477 out.go:203] 
+
+
