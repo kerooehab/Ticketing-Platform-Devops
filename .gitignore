@@ -1,0 +1,12 @@
+cat << EOF >> .gitignore
+# Environment variables
+.env
+
+# Logs
+logs.txt
+*.log
+
+# Python cache (since you have backend python files)
+__pycache__/
+*.pyc
+EOF
