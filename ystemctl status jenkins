@@ -1,0 +1,20 @@
+[0;1;32m●[0m jenkins.service - Jenkins Continuous Integration Server
+     Loaded: loaded (]8;;file://server/usr/lib/systemd/system/jenkins.service/usr/lib/systemd/system/jenkins.service]8;;; [0;1;32menabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2026-08-04 21:15:21 EDT; 3 days ago
+   Main PID: 6135 (java)
+      Tasks: 43 (limit: 28672)
+     Memory: 503.3M (peak: 795.6M)
+        CPU: 3min 2.015s
+     CGroup: /system.slice/jenkins.service
+             └─[0;38;5;245m6135 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080[0m
+
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.618+0000 [id=237]        INFO        jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.619+0000 [id=240]        INFO        jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.731+0000 [id=238]        INFO        jenkins.InitReactorRunner$1#onAttained: Started all plugins
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.734+0000 [id=238]        INFO        jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.880+0000 [id=239]        INFO        jenkins.InitReactorRunner$1#onAttained: System config loaded
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.885+0000 [id=239]        INFO        jenkins.InitReactorRunner$1#onAttained: System config adapted
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.889+0000 [id=239]        INFO        jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+Aug 04 21:21:48 server jenkins[6135]: 2026-08-05 01:21:48.906+0000 [id=238]        INFO        jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+Aug 04 21:21:50 server jenkins[6135]: 2026-08-05 01:21:50.527+0000 [id=240]        INFO        jenkins.InitReactorRunner$1#onAttained: Completed initialization
+Aug 04 21:21:50 server jenkins[6135]: 2026-08-05 01:21:50.540+0000 [id=90]        INFO        h.m.UpdateCenter$CompleteBatchJob#run: Completed installation of 92 plugins in 2 min 50 sec
