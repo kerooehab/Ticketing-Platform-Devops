@@ -33,6 +33,26 @@ pipeline {
                 sh 'docker build -t ticket-frontend:ci ./frontend'
             }
         }
+
+        stage('Push Images') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKERHUB_USER',
+                    passwordVariable: 'DOCKERHUB_TOKEN'
+                )]) {
+                    sh '''
+                        echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USER" --password-stdin docker.io
+
+                        docker tag ticket-backend:ci docker.io/$DOCKERHUB_USER/ticket-backend:$BUILD_NUMBER
+                        docker tag ticket-frontend:ci docker.io/$DOCKERHUB_USER/ticket-frontend:$BUILD_NUMBER
+
+                        docker push docker.io/$DOCKERHUB_USER/ticket-backend:$BUILD_NUMBER
+                        docker push docker.io/$DOCKERHUB_USER/ticket-frontend:$BUILD_NUMBER
+                    '''
+                }
+            }
+        }
     }
 
     post {
@@ -41,11 +61,11 @@ pipeline {
         }
 
         success {
-            echo 'CI pipeline completed successfully!'
+            echo 'CI/CD pipeline completed successfully!'
         }
 
         failure {
-            echo 'CI pipeline failed!'
+            echo 'CI/CD pipeline failed!'
         }
     }
 }
