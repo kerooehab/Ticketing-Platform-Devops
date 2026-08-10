@@ -53,6 +53,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                    kubectl -n ticketing set image deployment/backend \
+                        backend=docker.io/kerooehab/ticket-backend:$BUILD_NUMBER
+
+                    kubectl -n ticketing set image deployment/frontend \
+                        frontend=docker.io/kerooehab/ticket-frontend:$BUILD_NUMBER
+
+                    kubectl -n ticketing rollout status deployment/backend --timeout=120s
+
+                    kubectl -n ticketing rollout status deployment/frontend --timeout=120s
+                '''
+            }
+        }
     }
 
     post {
