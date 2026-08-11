@@ -2,34 +2,31 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: postgres-secret
-  namespace: ticketing
 type: Opaque
 stringData:
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: secretpassword
-  POSTGRES_DB: appdb
+  POSTGRES_USER: {{ .Values.postgres.username | quote }}
+  POSTGRES_PASSWORD: {{ .Values.postgres.password | quote }}
+  POSTGRES_DB: {{ .Values.postgres.database | quote }}
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
-  namespace: ticketing
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: {{ .Values.postgres.storage }}
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres
-  namespace: ticketing
 spec:
-  replicas: 1
+  replicas: {{ .Values.postgres.replicaCount }}
   selector:
     matchLabels:
       app: postgres
@@ -40,9 +37,9 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:15-alpine
+          image: "{{ .Values.postgres.image.repository }}:{{ .Values.postgres.image.tag }}"
           ports:
-            - containerPort: 5432
+            - containerPort: {{ .Values.postgres.port }}
           envFrom:
             - secretRef:
                 name: postgres-secret
@@ -75,11 +72,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres
-  namespace: ticketing
 spec:
   selector:
     app: postgres
   ports:
-    - port: 5432
-      targetPort: 5432
+    - port: {{ .Values.postgres.port }}
+      targetPort: {{ .Values.postgres.port }}
   type: ClusterIP

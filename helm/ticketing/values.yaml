@@ -1,0 +1,26 @@
+namespace: ticketing
+
+backend:
+  replicaCount: 1
+  image:
+    repository: kerooehab/ticket-backend
+    tag: "6"
+  port: 5000
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: kerooehab/ticket-frontend
+    tag: "6"
+  port: 80
+
+postgres:
+  replicaCount: 1
+  image:
+    repository: postgres
+    tag: "15-alpine"
+  port: 5432
+  storage: 1Gi
+  database: appdb
+  username: postgres
+  password: secretpassword
