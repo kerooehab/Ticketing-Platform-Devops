@@ -23,4 +23,3 @@ postgres:
   storage: 1Gi
   database: appdb
   username: postgres
-  password: secretpassword

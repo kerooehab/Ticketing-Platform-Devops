@@ -17,17 +17,20 @@ spec:
           image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
           ports:
             - containerPort: {{ .Values.backend.port }}
-          env:
-            - name: PORT
-              value: "{{ .Values.backend.port }}"
-            - name: DATABASE_HOST
-              value: "postgres"
+
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: postgres-secret
+
           readinessProbe:
             httpGet:
               path: /health
               port: {{ .Values.backend.port }}
             initialDelaySeconds: 5
             periodSeconds: 5
+
           livenessProbe:
             httpGet:
               path: /health

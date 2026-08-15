@@ -1,12 +1,23 @@
-cat << EOF >> .gitignore
 # Environment variables
 .env
+*.env
+
+# Secrets
+helm/ticketing/secrets.yaml
+**/secrets.yaml
+
+# Generated Helm output
+helm/ticketing/rendered.yaml
+rendered.yaml
 
 # Logs
 logs.txt
 *.log
 
-# Python cache (since you have backend python files)
+# Python cache
 __pycache__/
 *.pyc
-EOF
+*.pyo
+
+# Git
+.DS_Store
